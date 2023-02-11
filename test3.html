@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color:rgb(255, 255, 255);
+        }
+        .container {
+            position: relative;
+            border-radius: 10px;
+            width: 450px;
+            height: 400px;
+            animation: 0.3s linear;
+          }
+
+        @keyframes animate {
+          0% {
+            background-position: bottom;
+          }
+          100% {
+            background-position: top;
+          }
+        }
+form{
+    border-radius: 10px;
+    position: absolute;
+    inset: 5px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+    </style>
+</head>
+<body>
+    <div class="container" id="container">
+        <form action="">
+          <input type="text" oninput="runanimation();">
+        </form>
+    </div>
+
+    <script>
+      function getRandomNumber(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+      }
+      function getRandomColor(){
+        return getRandomNumber(0,255);
+      }
+
+      function runanimation(){
+        const element=document.getElementById('container');
+        element.style.background="linear-gradient(to bottom,transparent,transparent,transparent,rgb("+getRandomColor()+","+getRandomColor()+","+getRandomColor()+"),rgb("+getRandomColor()+","+getRandomColor()+","+getRandomColor()+"),transparent,transparent)";
+        element.style.backgroundSize="100% 300%";
+        element.style.animationName="animate";
+        setTimeout(() => {
+          element.style.animationName="none";
+        }, 270);
+      }
+
+    </script>
+</body>
+</html>
